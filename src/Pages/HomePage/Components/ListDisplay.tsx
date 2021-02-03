@@ -15,11 +15,12 @@ import ItemTodo from './ItemTodo'
 import { ACTION_TYPE, IAction, IState, ITodo } from '../../../Config/Components/type';
 interface Iprops {
     todoList: ITodo[],
-    checkTodo: (id: number) => void
+    checkTodo: (id: number) => void,
+    updateTodo: (todo: ITodo) => void
 }
 /* <------------------------------------ **** INTERFACE END **** ------------------------------------ */
 /* <------------------------------------ **** FUNCTION COMPONENT START **** ------------------------------------ */
-const ListDisplay = ({ todoList, checkTodo }: Iprops): JSX.Element => {
+const ListDisplay = ({ todoList, checkTodo, updateTodo }: Iprops): JSX.Element => {
     /* <------------------------------------ **** HOOKS START **** ------------------------------------ */
     /************* This section will include this component HOOK function *************/
     /* <------------------------------------ **** HOOKS END **** ------------------------------------ */
@@ -34,7 +35,7 @@ const ListDisplay = ({ todoList, checkTodo }: Iprops): JSX.Element => {
             {
                 todoList && todoList.map((todo: ITodo) => {
                     return (
-                        <ItemTodo todo={todo} key={todo.id} checkTodo={checkTodo} />
+                        <ItemTodo todo={todo} key={todo.id} checkTodo={checkTodo} updateTodo={updateTodo} />
                     )
                 })
             }

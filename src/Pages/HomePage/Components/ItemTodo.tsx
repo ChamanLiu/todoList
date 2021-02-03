@@ -6,7 +6,7 @@
 */
 /* <------------------------------------ **** DEPENDENCE IMPORT START **** ------------------------------------ */
 /** This section will include all the necessary dependence for this tsx file */
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Row, Col } from 'antd';
 /* <------------------------------------ **** DEPENDENCE IMPORT END **** ------------------------------------ */
 /* <------------------------------------ **** INTERFACE START **** ------------------------------------ */
@@ -14,16 +14,36 @@ import { Row, Col } from 'antd';
 import { ACTION_TYPE, IAction, IState, ITodo } from '../../../Config/Components/type';
 interface Iprops {
     todo: ITodo,
-    checkTodo: (id: number) => void
+    checkTodo: (id: number) => void,
+    updateTodo: (todo: ITodo) => void
 }
 /* <------------------------------------ **** INTERFACE END **** ------------------------------------ */
 /* <------------------------------------ **** FUNCTION COMPONENT START **** ------------------------------------ */
-const ItemTodo = ({ todo, checkTodo }: Iprops): JSX.Element => {
+const ItemTodo = ({ todo, checkTodo, updateTodo }: Iprops): JSX.Element => {
+
     /* <------------------------------------ **** HOOKS START **** ------------------------------------ */
     /************* This section will include this component HOOK function *************/
+    const [inputState, setInputState] = useState(todo);
+
     /* <------------------------------------ **** HOOKS END **** ------------------------------------ */
     /* <------------------------------------ **** PARAMETER START **** ------------------------------------ */
     /************* This section will include this component parameter *************/
+    const inputRef = useRef<HTMLInputElement>(null)
+    const updateItem = (): void => {
+        const inputUpdateVal: string = inputRef.current?.value as string
+        setInputState({
+            id: todo.id,
+            content: inputUpdateVal,
+            completed: todo.completed
+        })
+        updateTodo(
+            {
+                id: todo.id,
+                content: inputUpdateVal,
+                completed: todo.completed
+            }
+        )
+    }
     /* <------------------------------------ **** PARAMETER END **** ------------------------------------ */
     /* <------------------------------------ **** FUNCTION START **** ------------------------------------ */
     /************* This section will include this component general function *************/
@@ -33,7 +53,7 @@ const ItemTodo = ({ todo, checkTodo }: Iprops): JSX.Element => {
         <Row>
             <div>
                 <input type="checkbox" checked={todo.completed} onChange={() => checkTodo(todo.id)} />
-                <span>{todo.content}</span>
+                <input type='text' ref={inputRef} value={inputState.content} onChange={() => updateItem()} />
             </div>
         </Row>
     );

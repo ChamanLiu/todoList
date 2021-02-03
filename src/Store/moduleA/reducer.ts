@@ -35,13 +35,27 @@ function todoReducer(state: IState, action: IAction): IState {
                 todoList: state.todoList.map((todo) => {
                     return todo.id === payload
                         ? {
-                              ...todo,
-                              completed: !todo.completed,
-                          }
+                            ...todo,
+                            completed: !todo.completed,
+                        }
                         : todo;
                 }),
             };
             return toggle;
+        }
+        case ACTION_TYPE.UPDATE_TODO: {
+            const update = {
+                ...state,
+                todoList: state.todoList.map((todo) => {
+                    return (todo.id === (payload as ITodo).id
+                        ? {
+                            ...todo,
+                            content: (payload as ITodo).content
+                        }
+                        : todo)
+                })
+            }
+            return update
         }
         default: {
             return state;

@@ -59,6 +59,14 @@ const Todolist = (): JSX.Element => {
             payload: id
         })
     }
+    const updateTodo = (todo: ITodo): void => {
+        dispatch(
+            {
+                type: ACTION_TYPE.UPDATE_TODO,
+                payload: todo
+            }
+        )
+    }
     /* <------------------------------------ **** PARAMETER END **** ------------------------------------ */
     /* <------------------------------------ **** FUNCTION START **** ------------------------------------ */
     /************* This section will include this component general function *************/
@@ -71,7 +79,7 @@ const Todolist = (): JSX.Element => {
             <div className='Todolist' style={{ margin: '0 auto', width: '500px' }}>
                 <h1>Todolist</h1>
                 <InputTodo addTodo={addTodo} todoList={state.todoList} removeTodo={removeTodo} />
-                <ListDisplay todoList={state.todoList} checkTodo={checkTodo} />
+                <ListDisplay todoList={state.todoList} checkTodo={checkTodo} updateTodo={updateTodo} />
             </div>
         </Row>
     );

@@ -19,4 +19,5 @@ export enum ACTION_TYPE {
     TOGGLE_TODO = 'toggleTodo',
     INIT_TODOLIST = 'initTodo',
     CHECK_TODO = 'checkTodo',
+    UPDATE_TODO = 'updateTodo'
 }
