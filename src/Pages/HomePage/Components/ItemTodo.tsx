@@ -1,5 +1,5 @@
 /**
-* @file 
+* @file ItemTodo component
 * @date 2021-02-02
 * @author 
 * @lastModify  2021-02-02
@@ -14,11 +14,11 @@ import { Row, Col } from 'antd';
 import { ACTION_TYPE, IAction, IState, ITodo } from '../../../Config/Components/type';
 interface Iprops {
     todo: ITodo,
-    checkTodo: (id:number) => void
+    checkTodo: (id: number) => void
 }
 /* <------------------------------------ **** INTERFACE END **** ------------------------------------ */
 /* <------------------------------------ **** FUNCTION COMPONENT START **** ------------------------------------ */
-const ItemTodo = ({ todo ,checkTodo}: Iprops): JSX.Element => {
+const ItemTodo = ({ todo, checkTodo }: Iprops): JSX.Element => {
     /* <------------------------------------ **** HOOKS START **** ------------------------------------ */
     /************* This section will include this component HOOK function *************/
     /* <------------------------------------ **** HOOKS END **** ------------------------------------ */
@@ -28,10 +28,11 @@ const ItemTodo = ({ todo ,checkTodo}: Iprops): JSX.Element => {
     /* <------------------------------------ **** FUNCTION START **** ------------------------------------ */
     /************* This section will include this component general function *************/
     /* <------------------------------------ **** FUNCTION END **** ------------------------------------ */
+    //双击 可以进行更新元素
     return (
         <Row>
             <div>
-                 <input type="checkbox" checked={todo.completed} onChange={() => checkTodo(todo.id) }/>
+                <input type="checkbox" checked={todo.completed} onChange={() => checkTodo(todo.id)} />
                 <span>{todo.content}</span>
             </div>
         </Row>

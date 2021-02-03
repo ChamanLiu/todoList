@@ -47,16 +47,16 @@ const Todolist = (): JSX.Element => {
             payload: todo
         })
     }
-    const removeTodo = (todos:ITodo[]):void => {
-      dispatch({
-        type: ACTION_TYPE.REMOVE_TODO,
-        payload: todos
-      })
-    }
-    const checkTodo = (id:number):void => {
+    const removeTodo = (todos: ITodo[]): void => {
         dispatch({
-          type:ACTION_TYPE.CHECK_TODO,
-          payload:id
+            type: ACTION_TYPE.REMOVE_TODO,
+            payload: todos
+        })
+    }
+    const checkTodo = (id: number): void => {
+        dispatch({
+            type: ACTION_TYPE.CHECK_TODO,
+            payload: id
         })
     }
     /* <------------------------------------ **** PARAMETER END **** ------------------------------------ */
@@ -69,8 +69,9 @@ const Todolist = (): JSX.Element => {
     return (
         <Row>
             <div className='Todolist' style={{ margin: '0 auto', width: '500px' }}>
-                <InputTodo addTodo={addTodo} todoList={state.todoList} removeTodo={removeTodo}/>
-                <ListDisplay todoList={state.todoList} checkTodo={checkTodo}/>
+                <h1>Todolist</h1>
+                <InputTodo addTodo={addTodo} todoList={state.todoList} removeTodo={removeTodo} />
+                <ListDisplay todoList={state.todoList} checkTodo={checkTodo} />
             </div>
         </Row>
     );
