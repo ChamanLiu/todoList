@@ -51,8 +51,8 @@ const ItemTodo = ({ todo, checkTodo, updateTodo }: Iprops): JSX.Element => {
     //双击 可以进行更新元素
     return (
         <Row>
-            <div>
-                <input type="checkbox" checked={todo.completed} onChange={() => checkTodo(todo.id)} />
+            <div style={{ marginBottom: '5px' }}>
+                <input type="checkbox" checked={todo.completed} onChange={() => checkTodo(todo.id)} style={{ marginRight: '10px' }} />
                 <input type='text' ref={inputRef} value={inputState.content} onChange={() => updateItem()} />
             </div>
         </Row>

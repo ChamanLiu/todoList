@@ -48,9 +48,9 @@ const InputTodo = ({ addTodo, removeTodo, todoList }: Iprops): JSX.Element => {
     /* <------------------------------------ **** FUNCTION END **** ------------------------------------ */
     return (
         <Row>
-            <input type='text' ref={inputRef} style={{ width: '172px' }}></input>
-            <button onClick={addItem}>添加</button>
-            <button onClick={removeItem}>移除</button>
+            <input type='text' ref={inputRef} style={{ width: '194px', marginBottom: '10px' }}></input>
+            <button onClick={addItem} style={{ marginLeft: '5px' }}>添加</button>
+            <button onClick={removeItem} style={{ marginLeft: '5px' }}>移除</button>
         </Row>
     );
 };
